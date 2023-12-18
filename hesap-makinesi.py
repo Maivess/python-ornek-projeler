@@ -14,16 +14,16 @@ class HesapMakinesi:
         if y != 0:
             return x / y
         else:
-            return "Bölme işlemi sifira bolme hatasi"
+            return "Bolme islemi sifira bolme hatasi"
 
     def faktoriyel(self, x):
-        max_limit = 170  # math.factorial() sınırı
+        max_limit = 170 
         if x == 0 or x == 1:
             return 1
         elif x < 0 or not isinstance(x, int):
-            return "Geçersiz giriş. Pozitif bir tam sayı gerekir."
+            return "Gecersiz giris. Pozitif bir tam sayi gerekir."
         elif x > max_limit:
-            return "Sınırı aştınız. Daha küçük bir sayı deneyin."
+            return "Siniri astiniz. Daha kucuk bir sayi deneyin."
         else:
             return math.factorial(x)
 
@@ -37,7 +37,7 @@ class HesapMakinesi:
                 raise OverflowError("Result too large")
         except OverflowError as e:
             if "Result too large" in str(e):
-                return "Sınırı aştınız. Daha küçük bir sayı deneyin."
+                return "Siniri astiniz. Daha kucuk bir sayi deneyin."
             else:
                 raise e
             
