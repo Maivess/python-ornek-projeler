@@ -1,3 +1,5 @@
+import math
+
 class HesapMakinesi:
     def topla(self, x, y):
         return x + y
@@ -15,22 +17,38 @@ class HesapMakinesi:
             return "Bölme işlemi sifira bolme hatasi"
 
     def faktoriyel(self, x):
+        max_limit = 170  # math.factorial() sınırı
         if x == 0 or x == 1:
             return 1
+        elif x < 0 or not isinstance(x, int):
+            return "Geçersiz giriş. Pozitif bir tam sayı gerekir."
+        elif x > max_limit:
+            return "Sınırı aştınız. Daha küçük bir sayı deneyin."
         else:
-            sonuc = 1
-            for i in range(x + 1,2 ):
-                sonuc *= i
-            return sonuc
+            return math.factorial(x)
 
     def us_alma(self, x, y):
-        return x ** y
+        max_limit = 10**100  
+        try:
+            result = x ** y
+            if result <= max_limit:
+                return result
+            else:
+                raise OverflowError("Result too large")
+        except OverflowError as e:
+            if "Result too large" in str(e):
+                return "Sınırı aştınız. Daha küçük bir sayı deneyin."
+            else:
+                raise e
+            
+            
 
     def karekok(self, x):
-        if x >= 0:
+        
             return x ** 0.5
-        else:
-            return "Hatali islem. Karekok icin pozitif bir sayi gerekir."
+    
+    
+        
 
     def mod_alma(self, x, y):
         if y != 0:
@@ -53,6 +71,10 @@ while True:
     print("9. Çikis")
 
     secim = input("Yapmak istediğiniz işlemi seçin (1-9): ")
+
+    if not secim:
+        print("Geçersiz giriş. Lütfen bir seçenek girin.")
+        continue
 
     if secim == "9":
         print("Çikis yapiliyor...")
