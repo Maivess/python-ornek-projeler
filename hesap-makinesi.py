@@ -40,22 +40,15 @@ class HesapMakinesi:
                 return "Siniri astiniz. Daha kucuk bir sayi deneyin."
             else:
                 raise e
-            
-            
 
     def karekok(self, x):
-        
-            return x ** 0.5
-    
-    
-        
+        return x ** 0.5
 
     def mod_alma(self, x, y):
         if y != 0:
             return x % y
         else:
             return "Sifira bolme hatasi"
-
 
 hesap_makinesi = HesapMakinesi()
 
@@ -72,8 +65,8 @@ while True:
 
     secim = input("Yapmak istediğiniz işlemi seçin (1-9): ")
 
-    if not secim:
-        print("Geçersiz giriş. Lütfen bir seçenek girin.")
+    if not secim.isdigit() or not (1 <= int(secim) <= 9):
+        print("Geçersiz seçim. Lütfen 1-9 arasında bir sayı girin.")
         continue
 
     if secim == "9":
